@@ -1,5 +1,5 @@
 appname="lrcmaker"
-appver="1.0"
+appver="1.1"
 packagename="com.zfn.lrcmaker"
 user_permission={
   

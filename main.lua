@@ -7,7 +7,7 @@ import "layout"
 import "filechooser"
 import "android.media.MediaPlayer"
 import "android.text.InputType"
-local utf8=require("utf8-simple")
+local utf8=require("utf8-simple")0
 
 --activity.setTitle('AndroLua+')
 activity.setTheme(android.R.style.Theme_Material_Light)
@@ -23,9 +23,6 @@ b_choose.onClick=function()
   )
 end
 
-t_time.requestFocus();
-
-
 mp=MediaPlayer()
 function playMusic(path)
   mp.reset()
@@ -39,7 +36,7 @@ function playMusic(path)
   --print(mp.getDuration())
   p_pro.max=mp.getDuration()
   ti=Ticker()
-  ti.Period=10
+  ti.Period=1
   ti.onTick=function() 
     --事件
 
@@ -52,6 +49,11 @@ function playMusic(path)
       miao="0"..miao
     end
     hao=mp.getCurrentPosition()%1000
+    hao=hao/10
+    hao=math.floor(hao)
+    if hao<10 then
+      hao="0"..hao
+    end
     time="["..fen..":"..miao.."."..hao.."]"
     t_time.text=time
     p_pro.progress=mp.getCurrentPosition()
@@ -70,6 +72,7 @@ end
 function onDestroy()
   mp.stop()
   mp.release()
+  ti.stop()
 end
 
 function onResume()
@@ -103,6 +106,7 @@ b_add.onClick=function ()
   t1=utf8.sub(t,1,k)
   t2=utf8.sub(t,k+1,utf8.len(t))
   e_lrc.text=t1..time..t2
+  e_lrc.setSelection(n)
 end
 
 b_zuo.onClick=function ()

@@ -56,11 +56,20 @@
     focusable=true;
     focusableInTouchMode=true;
   };
+  
   {
-    EditText;
-    layout_height="fill";
-    layout_width="fill";
-    id="e_lrc";
-    gravity="top";
+    ScrollView;
+    layout_height="fill",
+    layout_width="fill",
+    {
+
+      EditText;
+      layout_height="fill";
+      layout_width="fill";
+      id="e_lrc";
+      gravity="top";
+      --editable="false";
+      --focusable="false";
+    }
   };
 };
