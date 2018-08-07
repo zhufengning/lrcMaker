@@ -7,7 +7,7 @@ import "layout"
 import "filechooser"
 import "android.media.MediaPlayer"
 import "android.text.InputType"
-local utf8=require("utf8-simple")0
+local utf8=require("utf8-simple")
 
 --activity.setTitle('AndroLua+')
 activity.setTheme(android.R.style.Theme_Material_Light)
